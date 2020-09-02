@@ -6,7 +6,9 @@
 
 代码示例已过时，需要更新
 
-解决某些情况下表格图片复制后无法黏贴的问题，参考[这里](https://stackoverflow.com/questions/10714251/how-to-avoid-using-select-in-excel-vba)重写
+尝试解决某些情况下__表格图片复制后无法黏贴的问题__，可以参考[这里](https://stackoverflow.com/questions/10714251/how-to-avoid-using-select-in-excel-vba)重写
+
+https://zhidao.baidu.com/question/257974352.html 自动添加加载项
 
 
 
@@ -54,17 +56,25 @@
 
 ## 导出和使用
 
-- 需要excel模板与VBA宏配合使用，VBA宏通过直接导出PERSONAL.XLSB，放到其他用户对应位置分享
+- 需要excel模板与VBA宏配合使用，VBA宏通过直接导出PERSONAL.XLSB后，放到其他用户的
 
-- 不同版本excel间可能有不兼容情况导致PERSONAL.XLSB无法在启动时自动加载，可以选择手动打开PERSONAL.XLSB工作簿后再打开要编辑的文档
+  ```powershell
+  C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Excel\XLSTART
+  ```
+
+  文件夹中即可使用
+
+- 本文所用office版本为2016版本，不同版本excel间可能有不兼容情况导致PERSONAL.XLSB无法在启动时自动加载，可以选择手动打开PERSONAL.XLSB工作簿后再打开要编辑的文档
 
   - 对于dll库缺失/dll库版本不一致，需要在VBA的*工具->引用* 内重新选择正确的版本
 
    - 对于无法创建/修改在XLSTART内的文件，需要在其他位置编辑完成后手动移入该文件夹内
 
-     或着，在360中关闭*office宏病毒免疫*  `//360 R U kidding??? 因噎废食`
+     或着，在360中关闭*office宏病毒免疫*  //360 R U kidding??? 因噎废食
 
 - 使用时导入word文档前，确保被导入文档是关闭状态
+
+- 各组数据需要按照报告呈现顺序依次导入，以确保导入图片顺序呈现正确
 
 - 调用方法
 
@@ -72,7 +82,7 @@
   - 对于老版本excel，可以将宏添加到自定义快速访问工具栏中
   - 对于可自定义选项卡的新版本，可以在*文件 -> 选项 -> 自定义功能区* 中将宏添加到选项卡中==（单个样品时推荐方法）==
   - 以上两种方案操作，[具体操作参考这里](https://jingyan.baidu.com/article/4dc40848753509c8d946f1a7.html)
-  - 在开发工具，插入按钮控件并且绑定宏，[具体操作参考这里](https://jingyan.baidu.com/article/3a2f7c2e32340e26afd61180.html)，（开发工具选项卡可以在excel选项中开启）==（多个样品时推荐方法）==
+  - 在开发工具，插入按钮控件并且绑定带有`_Click`后缀的宏，[具体操作参考这里](https://jingyan.baidu.com/article/3a2f7c2e32340e26afd61180.html)，（开发工具选项卡可以在excel选项中开启）==（多个样品时推荐方法）==
 
 - 宏功能说明
 
@@ -96,6 +106,7 @@
     被多样品数据模板内的按钮调用，点击后在当前sheet黏贴表格，并且在原始记录与数据报告sheet中，通过鼠标选取相应图片位置。
 
     
+
 
 ## 实现
 
@@ -196,8 +207,8 @@ tips:
 
 - 新建宏时选择 `录制宏->保存在个人工作簿` 创建个人工作簿PERSONAL.XLSB，其保存位置在
 
-  ```
-  C:\Users\{你的Windows用户名}\AppData\Roaming\Microsoft\Excel\XLSTART
+  ```powershell
+  C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Excel\XLSTART
   ```
 
   保存在此处便于在所有工作簿中调用该宏
@@ -302,7 +313,7 @@ End Sub
 ### 锁定excel可编辑区域
 
 **选取允许编辑的单元格**
-选中单元格并右键，在弹出的菜单中点击*设置单元格格式*，在弹出的*自定义序列*窗口中点击*保护*选项卡，然后将*锁定*复选框取消选中并点击*确定* 
+选中单元格并右键，在弹出的菜单中点击*设置单元格格式*，在弹出的*自定义序列*窗口中点击*保护*选项卡，然后将*锁定*复选框取消选中并点击*确定*   
 
 **保护其他单元格不能编辑**
 选择*审阅*选项卡中*保护工作表*，在弹出窗口中点击*确定*
