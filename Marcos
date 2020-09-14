@@ -1,0 +1,1240 @@
+Sub CEP()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    With fd
+        .AllowMultiSelect = False
+        .InitialFileName = ActiveWorkbook.Path
+        .Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        .FilterIndex = 2
+        .Title = "150kHz～30MHz电源端子骚扰电压"
+        If .Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            'UserForm1.Show
+            For Each vrtSelectedItem In .SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(5, 1).Select
+                ActiveSheet.Paste
+                
+                
+                'Dim temptable As Object
+                'Set temptable = wdApp.Documents(1).Tables(1)
+                'ActiveWorkbook.Sheets("D-1#").Select
+                'Range("A5:J12").Cells = temptable
+                
+                
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(16, 1).Select
+                ActiveSheet.Paste
+                
+                ActiveWorkbook.Activate
+                On Error Resume Next
+                ActiveWorkbook.Sheets("Y-CEP").Pictures(1).Delete
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("Y-CEP").Select
+                ActiveSheet.Cells(21, 2).Select
+                ActiveSheet.Paste
+                
+                Set pic_range = Range("B21:F27")
+                ActiveSheet.Pictures(1).Select
+                With Selection.ShapeRange
+                    .Top = pic_range.Top
+                    .Height = pic_range.Height
+                End With
+                ActiveSheet.Pictures(1).Copy
+                
+                On Error Resume Next
+                ActiveWorkbook.Sheets("B-CEP").Pictures(1).Delete
+                
+                ActiveWorkbook.Sheets("B-CEP").Select
+                ActiveSheet.Cells(55, 3).Select
+                ActiveSheet.Paste
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    End With
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub CE_five()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    'Dim iFile As Document
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    With fd
+        .AllowMultiSelect = False
+        .InitialFileName = ActiveWorkbook.Path
+        .Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        .FilterIndex = 2
+        .Title = "电信端口的传导共模骚扰 CAT5"
+        If .Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In .SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(30, 1).Select
+                ActiveSheet.Paste
+                
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(41, 1).Select
+                ActiveSheet.Paste
+                
+                
+                ActiveWorkbook.Activate
+                On Error Resume Next
+                ActiveWorkbook.Sheets("Y-CE56").Pictures(1).Delete
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("Y-CE56").Select
+                ActiveSheet.Cells(15, 2).Select
+                ActiveSheet.Paste
+                
+                Set pic_range = Range("B15:F21")
+                ActiveSheet.Pictures(1).Select
+                With Selection.ShapeRange
+                    .Top = pic_range.Top
+                    .Height = pic_range.Height
+                End With
+                ActiveSheet.Pictures(1).Copy
+                
+                On Error Resume Next
+                ActiveWorkbook.Sheets("B-CE56").Pictures(1).Delete
+                
+                ActiveWorkbook.Sheets("B-CE56").Select
+                ActiveSheet.Cells(48, 4).Select
+                ActiveSheet.Paste
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+             ActiveWorkbook.Activate
+        End If
+    End With
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub CE_six()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    'Dim iFile As Document
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    With fd
+        .AllowMultiSelect = False
+        .InitialFileName = ActiveWorkbook.Path
+        .Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        .FilterIndex = 2
+        .Title = "电信端口的传导共模骚扰 CAT6"
+        If .Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In .SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(54, 1).Select
+                ActiveSheet.Paste
+                
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(65, 1).Select
+                ActiveSheet.Paste
+                
+                ActiveWorkbook.Activate
+                On Error Resume Next
+                ActiveWorkbook.Sheets("Y-CE56").Pictures(2).Delete
+
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(65, 1).Select
+                ActiveWorkbook.Sheets("D-1#").Paste
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("Y-CE56").Select
+                ActiveSheet.Cells(39, 2).Select
+                ActiveSheet.Paste
+                
+                Set pic_range = Range("B39:F45")
+                ActiveSheet.Pictures(2).Select
+                With Selection.ShapeRange
+                    .Top = pic_range.Top
+                    .Height = pic_range.Height
+                End With
+                ActiveSheet.Pictures(2).Copy
+                
+                On Error Resume Next
+                ActiveWorkbook.Sheets("B-CE56").Pictures(2).Delete
+                
+                ActiveWorkbook.Sheets("B-CE56").Select
+                ActiveSheet.Cells(74, 4).Select
+                ActiveSheet.Paste
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    End With
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub LV()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    With fd
+        .AllowMultiSelect = False
+        .InitialFileName = ActiveWorkbook.Path
+        .Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        .FilterIndex = 2
+        .Title = "30MHz～1000MHz 辐射骚扰 LV"
+        If .Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In .SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(79, 1).Select
+                ActiveSheet.Paste
+                
+                ActiveWorkbook.Activate
+                On Error Resume Next
+                ActiveWorkbook.Sheets("LVH").Pictures(1).Delete
+
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(4).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("LVH").Select
+                ActiveSheet.Cells(14, 2).Select
+                ActiveSheet.Paste
+                
+                Set pic_range = Range("B14:D20")
+                ActiveSheet.Pictures(1).Select
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Top = pic_range.Top
+                    .Height = pic_range.Height
+                End With
+                ActiveSheet.Pictures(1).Copy
+                
+                On Error Resume Next
+                ActiveWorkbook.Sheets("B-LVH").Pictures(1).Delete
+                
+                ActiveWorkbook.Sheets("B-LVH").Select
+                ActiveSheet.Cells(45, 5).Select
+                ActiveSheet.Paste
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    End With
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+
+Sub LH()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    With fd
+        .AllowMultiSelect = False
+        .InitialFileName = ActiveWorkbook.Path
+        .Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        .FilterIndex = 2
+        .Title = "30MHz～1000MHz 辐射骚扰 LH"
+        If .Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In .SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(89, 1).Select
+                ActiveSheet.Paste
+                
+                ActiveWorkbook.Activate
+                On Error Resume Next
+                ActiveWorkbook.Sheets("LVH").Pictures(2).Delete
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(4).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("LVH").Select
+                ActiveSheet.Cells(22, 2).Select
+                ActiveSheet.Paste
+                
+                Set pic_range = Range("B22:D28")
+                ActiveSheet.Pictures(2).Select
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Top = pic_range.Top
+                    .Height = pic_range.Height
+                End With
+                ActiveSheet.Pictures(2).Copy
+                
+                On Error Resume Next
+                ActiveWorkbook.Sheets("B-LVH").Pictures(2).Delete
+                
+                ActiveWorkbook.Sheets("B-LVH").Select
+                ActiveSheet.Cells(52, 5).Select
+                ActiveSheet.Paste
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    End With
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub HV()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    With fd
+        .AllowMultiSelect = False
+        .InitialFileName = ActiveWorkbook.Path
+        .Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        .FilterIndex = 2
+        .Title = "1GHz以上辐射骚扰 HV"
+        If .Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In .SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(100, 1).Select
+                ActiveSheet.Paste
+                
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(111, 1).Select
+                ActiveSheet.Paste
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("HVH").Select
+                ActiveSheet.Cells(38, 3).Select
+                ActiveSheet.Paste
+                
+                Set pic_range = Range("C38:G47")
+                ActiveSheet.Pictures(1).Select
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Top = pic_range.Top
+                    .Height = pic_range.Height
+                End With
+                ActiveSheet.Pictures(1).Copy
+                ActiveWorkbook.Sheets("B-HVH").Select
+                ActiveSheet.Cells(65, 5).Select
+                ActiveSheet.Paste
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    End With
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub HH()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    With fd
+        .AllowMultiSelect = False
+        .InitialFileName = ActiveWorkbook.Path
+        .Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        .FilterIndex = 2
+        .Title = "1GHz以上辐射骚扰 HH"
+        If .Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In .SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(124, 1).Select
+                ActiveSheet.Paste
+                
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(135, 1).Select
+                ActiveSheet.Paste
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("HVH").Select
+                ActiveSheet.Cells(49, 3).Select
+                ActiveSheet.Paste
+                
+                Set pic_range = Range("C49:G58")
+                ActiveSheet.Pictures(2).Select
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Top = pic_range.Top
+                    .Height = pic_range.Height
+                End With
+                ActiveSheet.Pictures(2).Copy
+                ActiveWorkbook.Sheets("B-HVH").Select
+                ActiveSheet.Cells(73, 5).Select
+                ActiveSheet.Paste
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    End With
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub Export_Origin()
+    Dim new_array() As String
+    ReDim new_array(8)
+    Dim i As Integer
+    i = 0
+    
+    ActiveWorkbook.Sheets("D-1#").Select
+    ActiveSheet.Cells(10, 13).Value = "报告编号"
+    ActiveSheet.Cells(11, 13).Value = "申请编号"
+    ActiveSheet.Cells(12, 13).Value = "报告编号"
+    sName = ActiveWorkbook.Path & "\\" & Worksheets("D-1#").Range("N11").Value & " 原始记录"
+    
+    OriginalSheetsArray = Array("封面", "仪器", "标准", "Y-CEP", "Y-CE56", "LVH", "HVH", "HD", "布置图")
+    For Each singlesheet In OriginalSheetsArray
+        On Error Resume Next
+        If ActiveWorkbook.Sheets(singlesheet) Is Nothing Then
+            '
+        Else
+            new_array(i) = singlesheet
+            i = i + 1
+        End If
+    Next singlesheet
+    ReDim Preserve new_array(i - 1)
+    
+    i = 0
+    For Each singlesheet In Sheets(new_array)
+             i = i + singlesheet.PageSetup.Pages.Count
+    Next singlesheet
+    Sheets("封面").Cells(10, 12) = i
+    
+    Sheets(new_array).Select
+    Sheets("封面").Activate
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:=sName, Quality:=xlQualityStandard, OpenAfterPublish:=True
+    Sheets("D-1#").Activate
+End Sub
+
+Sub Export_DE()
+    'MsgBox ActiveWorkbook.Path
+    ActiveWorkbook.Sheets("D-1#").Select
+    ActiveSheet.Cells(10, 13).Value = "报告编号"
+    ActiveSheet.Cells(11, 13).Value = "申请编号"
+    ActiveSheet.Cells(12, 13).Value = "报告编号"
+    
+    sName = ActiveWorkbook.Path & "\\" & Worksheets("D-1#").Range("N11").Value & "-D-E"
+    Sheets(Array("B1", "B2", "B-CEP", "B-CE56", "B-LVH", "B-HVH", "B-HD", "B-3")).Select
+    Sheets("B1").Activate
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:=sName, Quality:=xlQualityStandard, OpenAfterPublish:=True
+    Sheets("D-1#").Activate
+End Sub
+Sub HeaderRename()
+    SheetsArray = Array("B1", "B2", "B-CEP", "B-CE56", "B-LVH", "B-HVH", "B-HD", "B-3")
+    For Each singlesheet In SheetsArray
+        Sheets(singlesheet).Activate
+        ActiveWorkbook.Sheets("D-1#").Select
+        ActiveSheet.Cells(10, 13).Value = "报告编号"
+        ActiveSheet.Cells(11, 13).Value = "申请编号"
+        ActiveSheet.Cells(12, 13).Value = "报告编号"
+        ActiveSheet.PageSetup.LeftHeader = "申请编号：" & Worksheets("D-1#").Range("N10").Value
+        ActiveSheet.PageSetup.RightHeader = "报告编号：" & Worksheets("D-1#").Range("N11").Value & "-D-E"
+    Next singlesheet
+    Sheets("D-1#").Activate
+End Sub
+Sub Pic_CLR()
+    For Each singlesheet In ActiveWorkbook.Sheets
+        singlesheet.Select
+        If singlesheet.Pictures.Count <> 0 And singlesheet.Name <> "布置图" Then
+            singlesheet.Pictures.Select
+            Selection.Delete
+        End If
+    Next singlesheet
+End Sub
+
+Sub CEP_Click()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    With fd
+        .AllowMultiSelect = False
+        .InitialFileName = ActiveWorkbook.Path
+        .Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        .FilterIndex = 2
+        .Title = "150kHz～30MHz电源端子骚扰电压"
+        If .Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            'UserForm1.Show
+            For Each vrtSelectedItem In .SelectedItems
+                wdApp.Documents.Open vrtSelectedItem, ReadOnly:=True
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(5, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(5, 1).Select
+
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("D-1#").Select
+                ActiveSheet.Cells(16, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(16, 1).Select
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("Y-CEP").Select
+                ActiveSheet.Cells(21, 2).Select
+                ActiveSheet.Paste
+                
+                Set pic_range = Range("B21:F27")
+                ActiveSheet.Pictures(1).Select
+                With Selection.ShapeRange
+                    .Top = pic_range.Top
+                    .Height = pic_range.Height
+                End With
+                ActiveSheet.Pictures(1).Copy
+                
+                ActiveWorkbook.Sheets("B-CEP").Select
+                ActiveSheet.Cells(55, 3).Select
+                ActiveSheet.Paste
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    End With
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub CE_five_Click()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    fd.AllowMultiSelect = False
+    fd.InitialFileName = ActiveWorkbook.Path
+    fd.Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+    fd.FilterIndex = 2
+    fd.Title = "电信端口的传导共模骚扰 CAT5"
+        If fd.Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In fd.SelectedItems
+                wdApp.Documents.Open vrtSelectedItem, ReadOnly:=True
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(30, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(30, 1).Select
+                
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(41, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(41, 1).Select
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                wdApp.WindowState = wdWindowStateMinimize
+                'ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("Y-CE56").Select
+                ActiveSheet.Paste
+                
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                Set pic_range = Range("B15:F21")
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Height = pic_range.Height
+                End With
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                With Selection.ShapeRange
+                    .Top = myRange.Top
+                End With
+                ActiveSheet.Pictures(PicCount).Copy
+                '''wtf magic
+                ActiveSheet.Cells(1, 1).Select
+                '''
+                
+                ActiveWorkbook.Sheets("B-CE56").Select
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                ActiveSheet.Paste
+                Selection.ShapeRange.Top = myRange.Top
+                Selection.ShapeRange.Left = myRange.Left
+
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub CE_six_Click()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+    
+        fd.AllowMultiSelect = False
+        fd.InitialFileName = ActiveWorkbook.Path
+        fd.Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        fd.FilterIndex = 2
+        fd.Title = "电信端口的传导共模骚扰 CAT6"
+        If fd.Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In fd.SelectedItems
+                wdApp.Documents.Open vrtSelectedItem, ReadOnly:=True
+                
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(54, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(54, 1).Select
+
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(65, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(65, 1).Select
+
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                wdApp.WindowState = wdWindowStateMinimize
+                'ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("Y-CE56").Select
+                ActiveSheet.Paste
+                
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                Set pic_range = Range("B39:F45")
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Height = pic_range.Height
+                End With
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                Set myRange = ActiveSheet.Range("A1:I500").FindNext(myRange)
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                With Selection.ShapeRange
+                    .Top = myRange.Top
+                End With
+                ActiveSheet.Pictures(PicCount).Copy
+                '''wtf magic
+                ActiveSheet.Cells(1, 1).Select
+                '''
+
+                ActiveWorkbook.Sheets("B-CE56").Select
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                Set myRange = ActiveSheet.Range("A1:I500").FindNext(myRange)
+                ActiveSheet.Paste
+                Selection.ShapeRange.Top = myRange.Top
+                Selection.ShapeRange.Left = myRange.Left
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub LV_Click()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+        fd.AllowMultiSelect = False
+        fd.InitialFileName = ActiveWorkbook.Path
+        fd.Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        fd.FilterIndex = 2
+        fd.Title = "30MHz～1000MHz 辐射骚扰 LV"
+        If fd.Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In fd.SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(79, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(79, 1).Select
+
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(4).Range.Copy
+                wdApp.WindowState = wdWindowStateMinimize
+                'ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("LVH").Select
+                ActiveSheet.Paste
+                
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                Set pic_range = Range("B14:D20")
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Height = pic_range.Height
+                End With
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                With Selection.ShapeRange
+                    .Top = myRange.Top
+                End With
+                ActiveSheet.Pictures(PicCount).Copy
+                '''wtf magic
+                ActiveSheet.Cells(1, 1).Select
+                '''
+
+                ActiveWorkbook.Sheets("B-LVH").Select
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                ActiveSheet.Paste
+                Selection.ShapeRange.Top = myRange.Top
+                Selection.ShapeRange.Left = myRange.Left
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    wdApp.Quit
+    MsgBox "Done!"
+End Sub
+
+
+Sub LH_Click()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+        fd.AllowMultiSelect = False
+        fd.InitialFileName = ActiveWorkbook.Path
+        fd.Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        fd.FilterIndex = 2
+        fd.Title = "30MHz～1000MHz 辐射骚扰 LH"
+        If fd.Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In fd.SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(89, 1).Select
+                ActiveSheet.Paste
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(4).Range.Copy
+                wdApp.WindowState = wdWindowStateMinimize
+                'ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("LVH").Select
+                ActiveSheet.Paste
+                
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                Set pic_range = Range("B22:D28")
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Height = pic_range.Height
+                End With
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                Set myRange = ActiveSheet.Range("A1:I500").FindNext(myRange)
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                With Selection.ShapeRange
+                    .Top = myRange.Top
+                End With
+                ActiveSheet.Pictures(PicCount).Copy
+                '''wtf magic
+                ActiveSheet.Cells(1, 1).Select
+                '''
+
+                ActiveWorkbook.Sheets("B-LVH").Select
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                Set myRange = ActiveSheet.Range("A1:I500").FindNext(myRange)
+                ActiveSheet.Paste
+                Selection.ShapeRange.Top = myRange.Top
+                Selection.ShapeRange.Left = myRange.Left
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub HV_Click()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+        fd.AllowMultiSelect = False
+        fd.InitialFileName = ActiveWorkbook.Path
+        fd.Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        fd.FilterIndex = 2
+        fd.Title = "1GHz以上辐射骚扰 HV"
+        If fd.Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In fd.SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(100, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(100, 1).Select
+                
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(111, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(111, 1).Select
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                wdApp.WindowState = wdWindowStateMinimize
+                'ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("HVH").Select
+                ActiveSheet.Paste
+                
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                Set pic_range = Range("C38:G47")
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Height = pic_range.Height
+                End With
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                With Selection.ShapeRange
+                    .Top = myRange.Top
+                End With
+                ActiveSheet.Pictures(PicCount).Copy
+                '''wtf magic
+                ActiveSheet.Cells(1, 1).Select
+                '''
+
+                ActiveWorkbook.Sheets("B-HVH").Select
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                ActiveSheet.Paste
+                Selection.ShapeRange.Top = myRange.Top
+                Selection.ShapeRange.Left = myRange.Left
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub HH_Click()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+        fd.AllowMultiSelect = False
+        fd.InitialFileName = ActiveWorkbook.Path
+        fd.Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        fd.FilterIndex = 2
+        fd.Title = "1GHz以上辐射骚扰 HH"
+        If fd.Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In fd.SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                wdApp.WindowState = wdWindowStateMinimize
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(124, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(124, 1).Select
+                
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(135, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(135, 1).Select
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                wdApp.WindowState = wdWindowStateMinimize
+                'ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("HVH").Select
+                ActiveSheet.Paste
+                
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                Set pic_range = Range("C49:G58")
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Height = pic_range.Height
+                End With
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                Set myRange = ActiveSheet.Range("A1:I500").FindNext(myRange)
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                With Selection.ShapeRange
+                    .Top = myRange.Top
+                End With
+                ActiveSheet.Pictures(PicCount).Copy
+                '''wtf magic
+                ActiveSheet.Cells(1, 1).Select
+                '''
+
+                ActiveWorkbook.Sheets("B-HVH").Select
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                Set myRange = ActiveSheet.Range("A1:I500").FindNext(myRange)
+                ActiveSheet.Paste
+                Selection.ShapeRange.Top = myRange.Top
+                Selection.ShapeRange.Left = myRange.Left
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+Sub License()
+        ActiveWorkbook.Activate
+        ActiveWorkbook.Sheets("D-1#").Select
+        ActiveSheet.Cells(3, 12).Value = "Powered by herryqyh"
+        ActiveSheet.Cells(4, 12).Value = "Please feel free to create issues if you encountered any problems while using"
+        ActiveSheet.Cells(5, 12).Value = "at "
+        ActiveSheet.Cells(5, 13).Value = "https://github.com/herryqyh/VBA-Macro-tools-Excel-templates-for-CCC-reports/issues"
+        ActiveSheet.Cells(3, 12).Value = "Powered by herryqyh"
+        'ActiveSheet.Hyperlinks.Add Anchor:=ActiveSheet.Cells(5, 14), Address:= _
+        "https://github.com/herryqyh/VBA-Macro-tools-Excel-templates-for-CCC-reports/issues" _
+        , TextToDisplay:= _
+        "https://github.com/herryqyh/VBA-Macro-tools-Excel-templates-for-CCC-reports/issues"
+        ActiveSheet.Cells(6, 12).Value = "or contact me directly"
+        
+        ActiveSheet.Cells(10, 13).Value = "报告编号"
+        ActiveSheet.Cells(11, 13).Value = "申请编号"
+        ActiveSheet.Cells(12, 13).Value = "指定编号"
+End Sub
+
+Sub Data_CLR()
+
+    For Each singlesheet In ActiveWorkbook.Sheets
+        singlesheet.Select
+        If Right(singlesheet.Name, 1) = "#" Then
+            Range("A7:J12").Select
+            Selection.ClearContents
+            Range("A18:J23").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=12
+            Range("A32:H37").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=18
+            Range("A43:H48").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=12
+            Range("A56:H61").Select
+            Selection.ClearContents
+            Range("A67:H72").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=18
+            Range("A81:K83").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=9
+            Range("A91:K93").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=12
+            Range("A102:I107").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=15
+            Range("A113:I118").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=3
+            Range("A126:I131").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=12
+            Range("A137:I142").Select
+            Selection.ClearContents
+            ActiveWindow.SmallScroll Down:=12
+        End If
+    Next singlesheet
+
+   
+End Sub
+Sub HV_Click_Anchor()
+    Dim fd As FileDialog, vrtSelectedItem As Variant
+    Dim wdApp As Object
+    sht = ActiveSheet.Name
+    'MsgBox sht
+    Set fd = Application.FileDialog(msoFileDialogFilePicker)
+    Set wdApp = CreateObject("Word.Application")
+    wdApp.Visible = True
+        fd.AllowMultiSelect = False
+        fd.InitialFileName = ActiveWorkbook.Path
+        fd.Filters.Add "Documents", "*.doc; *.docx; *.rtf", 1
+        fd.FilterIndex = 2
+        fd.Title = "1GHz以上辐射骚扰 HV"
+        If fd.Show <> -1 Then
+            MsgBox "未选择文件", vbCritical
+            Exit Sub
+        Else
+            For Each vrtSelectedItem In fd.SelectedItems
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(1).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(100, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(100, 1).Select
+                
+                wdApp.Documents.Open vrtSelectedItem
+                wdApp.Activate
+                wdApp.Documents(1).Tables(2).Range.Copy
+                'ActiveWorkbook.Activate
+                ActiveSheet.Select
+                ActiveSheet.Cells(111, 1).Select
+                ActiveSheet.Paste
+                ActiveSheet.Cells(111, 1).Select
+                
+                wdApp.Activate
+                wdApp.Documents(1).Paragraphs(3).Range.Copy
+                wdApp.WindowState = wdWindowStateMinimize
+                'ActiveWorkbook.Activate
+                ActiveWorkbook.Sheets("HVH").Select
+                ActiveSheet.Paste
+                
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                Set pic_range = Range("C38:G47")
+                With Selection.ShapeRange
+                    .Left = pic_range.Left
+                    .Height = pic_range.Height
+                End With
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                
+                PicCount = ActiveSheet.Pictures.Count
+                ActiveSheet.Pictures(PicCount).Select
+                With Selection.ShapeRange
+                    .Top = myRange.Top
+                End With
+                ActiveSheet.Pictures(PicCount).Copy
+                '''wtf magic
+                ActiveSheet.Cells(1, 1).Select
+                '''
+
+                ActiveWorkbook.Sheets("B-HVH").Select
+                'Set myRange = Application.InputBox(prompt:="选择图片位置", Type:=8)
+                Set myRange = ActiveSheet.Range("A1:I500").Find(sht, LookIn:=xlValues)
+                ActiveSheet.Paste
+                Selection.ShapeRange.Top = myRange.Top
+                Selection.ShapeRange.Left = myRange.Left
+                
+                wdApp.ActiveDocument.Close
+                
+            Next vrtSelectedItem
+            ActiveWorkbook.Activate
+        End If
+    wdApp.Quit
+    MsgBox "Done!"
+    Call License
+End Sub
+
+
+
+
